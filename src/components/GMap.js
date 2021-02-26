@@ -4,7 +4,6 @@ const GMap = ({ placeName }) => {
   const googleMapRef = useRef()
   let googleMap
   useEffect(() => {
-    console.log(process.env.REACT_APP_MAP_API_KEY)
     const googleMapScript = document.createElement('script')
     googleMapScript.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_MAP_API_KEY}&libraries=places`
     googleMapScript.async = true
@@ -12,6 +11,7 @@ const GMap = ({ placeName }) => {
     googleMapScript.addEventListener('load', () => {
       getLatLng()
     })
+    // eslint-disable-next-line
   }, [])
 
   const createGoogleMap = (coordinates) => {
@@ -48,6 +48,7 @@ const GMap = ({ placeName }) => {
         }
       }
     )
+    console.log(lat, lng, placeId)
   }
   return (
     <div

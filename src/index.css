@@ -155,3 +155,8 @@ button#route {
   background: #074770;
   color: white;
 }
+
+button:hover {
+  cursor: pointer;
+  opacity: 0.9;
+}
