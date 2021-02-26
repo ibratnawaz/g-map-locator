@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Form from './components/Form'
+import LocationLists from './components/LocationLists'
+import GMap from './components/GMap'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='app'>
+      <button id='home'>Home</button>
+      <div className='container'>
+        <Form />
+        <div className='inner_container'>
+          <LocationLists />
+          <GMap />
+        </div>
+      </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
