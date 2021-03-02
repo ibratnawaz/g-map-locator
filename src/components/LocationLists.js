@@ -13,7 +13,9 @@ const LocationLists = () => {
 
   const clickHandler = () => {
     markRoute()
-    clearState()
+    setTimeout(() => {
+      clearState()
+    }, 1500)
   }
   return (
     <div className='table-content'>

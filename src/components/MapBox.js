@@ -23,6 +23,7 @@ const MapBox = () => {
   const [coord, setCoord] = useState([])
 
   useEffect(() => {
+    console.log(showPath, locations)
     if (showPath && coord.length < locations.length) {
       locations.map((val) =>
         setCoord((prevState) => [...prevState, [val.lng, val.lat]])
