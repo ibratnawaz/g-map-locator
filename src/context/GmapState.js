@@ -1,12 +1,13 @@
 import React, { useReducer } from 'react'
 import gmapContext from './gmapContext'
 import GmapReducer from './gmapReducer'
-import { SAVE_LOCATION, CLEAR_STATES, SET_LOADING } from './type'
+import { SAVE_LOCATION, CLEAR_STATES, SET_LOADING, SHOW_ROUTE } from './type'
 
 const GmapState = (props) => {
   const initialState = {
     locations: [],
     loading: false,
+    showPath: false,
   }
 
   const [state, dispatch] = useReducer(GmapReducer, initialState)
@@ -20,6 +21,9 @@ const GmapState = (props) => {
     })
   }
 
+  // show path
+  const markRoute = () => dispatch({ type: SHOW_ROUTE })
+
   //   set loading
   const setLoading = () => dispatch({ type: SET_LOADING })
 
@@ -31,9 +35,11 @@ const GmapState = (props) => {
       value={{
         locations: state.locations,
         loading: state.loading,
+        showPath: state.showPath,
         saveLocation,
         setLoading,
         clearState,
+        markRoute,
       }}>
       {props.children}
     </gmapContext.Provider>

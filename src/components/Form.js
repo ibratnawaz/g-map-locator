@@ -8,6 +8,8 @@ const Form = () => {
   const refPlace = useRef(null)
 
   const [place, setPlace] = useState('')
+  const [lat, setLat] = useState('')
+  const [lng, setLng] = useState('')
 
   useEffect(() => {
     refPlace.current.focus()
@@ -15,8 +17,10 @@ const Form = () => {
 
   const submitHandler = (e) => {
     e.preventDefault()
-    saveLocation(place)
+    saveLocation({ place, lat, lng })
     setPlace('')
+    setLat('')
+    setLng('')
   }
 
   return (
@@ -36,11 +40,25 @@ const Form = () => {
         </div>
         <div className='latitude'>
           <label htmlFor='lat'>Enter Latitude</label>
-          <input type='text' id='lat' placeholder='Lat' />
+          <input
+            type='text'
+            value={lat}
+            id='lat'
+            placeholder='Lat'
+            onChange={(e) => setLat(e.target.value)}
+            required
+          />
         </div>
         <div className='longitude'>
           <label htmlFor='lng'>Enter Longitude</label>
-          <input type='text' id='lng' placeholder='Lng' />
+          <input
+            type='text'
+            value={lng}
+            id='lng'
+            placeholder='Lng'
+            onChange={(e) => setLng(e.target.value)}
+            required
+          />
         </div>
         <div className='submit'>
           <button id='submit'> SUBMIT </button>

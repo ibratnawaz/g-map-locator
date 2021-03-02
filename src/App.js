@@ -1,7 +1,7 @@
 import React from 'react'
 import Form from './components/Form'
 import LocationLists from './components/LocationLists'
-import GMap from './components/GMap'
+import MapBox from './components/MapBox'
 
 import GmapState from './context/GmapState'
 
@@ -14,7 +14,7 @@ function App() {
           <Form />
           <div className='inner_container'>
             <LocationLists />
-            <GMap />
+            <MapBox />
           </div>
         </div>
       </div>

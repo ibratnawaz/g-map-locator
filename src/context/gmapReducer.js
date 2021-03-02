@@ -13,6 +13,7 @@ export default (state, action) => {
       return {
         ...state,
         loading: false,
+        showPath: true,
       }
     case CLEAR_STATES:
       return {

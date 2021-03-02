@@ -1,12 +1,14 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import GmapContext from '../context/gmapContext'
 
 const LocationLists = () => {
   const gmapContext = useContext(GmapContext)
-  const { locations } = gmapContext
+  const { locations, markRoute } = gmapContext
 
+  const [disable, setDisable] = useState(true)
   useEffect(() => {
     console.log(locations)
+    if (locations.length) setDisable(false)
   }, [locations])
 
   return (
@@ -28,10 +30,10 @@ const LocationLists = () => {
               {locations.map((val, index) => (
                 <tr key={index}>
                   <td>
-                    {index + 1})-- {val}
+                    {index + 1}) {val.place}
                   </td>
-                  <td>------</td>
-                  <td>------</td>
+                  <td>{val.lat}</td>
+                  <td>{val.lng}</td>
                 </tr>
               ))}
             </tbody>
@@ -40,7 +42,9 @@ const LocationLists = () => {
       </div>
 
       <div className='route'>
-        <button id='route'>Show Route</button>
+        <button id='route' disabled={disable} onClick={()=>markRoute()}>
+          Show Route
+        </button>
       </div>
     </div>
   )
