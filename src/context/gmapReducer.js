@@ -18,7 +18,7 @@ export default (state, action) => {
     case CLEAR_STATES:
       return {
         ...state,
-        locations: [],
+        showPath: false,
         loading: false,
       }
     case SET_LOADING:

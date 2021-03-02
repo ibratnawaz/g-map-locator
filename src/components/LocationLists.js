@@ -3,7 +3,7 @@ import GmapContext from '../context/gmapContext'
 
 const LocationLists = () => {
   const gmapContext = useContext(GmapContext)
-  const { locations, markRoute } = gmapContext
+  const { locations, markRoute, clearState } = gmapContext
 
   const [disable, setDisable] = useState(true)
   useEffect(() => {
@@ -11,6 +11,10 @@ const LocationLists = () => {
     if (locations.length) setDisable(false)
   }, [locations])
 
+  const clickHandler = () => {
+    markRoute()
+    clearState()
+  }
   return (
     <div className='table-content'>
       <div className='table-title'>ALL CO-ORDINATES</div>
@@ -42,7 +46,7 @@ const LocationLists = () => {
       </div>
 
       <div className='route'>
-        <button id='route' disabled={disable} onClick={()=>markRoute()}>
+        <button id='route' disabled={disable} onClick={clickHandler}>
           Show Route
         </button>
       </div>
